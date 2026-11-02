@@ -1,14 +1,12 @@
 from models.composant import Composant
 from abc import ABC, abstractmethod
 
-
 class Composite(Composant, ABC):
     """Nœud intermédiaire — délègue à ses enfants."""
-
+    
     def __init__(self, nom: str):
         super().__init__(nom)
         self._enfants: list[Composant] = []
-        
 
     def ajouter(self, enfant: Composant) -> None:
         self._enfants.append(enfant)
@@ -26,21 +24,26 @@ class Composite(Composant, ABC):
 
     def to_dict(self) -> dict:
         return {
-            "type": self.__class__.__name__.lower(),
-            "nom": self.nom,
-            "moyenne": self.moyenne(),
-            "nb_etudiants": self.nb_etudiants(),
-            "enfants": [e.to_dict() for e in self._enfants]
+            "type": self.__class__.__name__.lower(), # Ajout des guillemets
+            "nom": self.nom,                         # Ajout des guillemets
+            "moyenne": self.moyenne(),               # Ajout des guillemets
+            "nb_etudiants": self.nb_etudiants(),     # Ajout des guillemets
+            "enfants": [e.to_dict() for e in self._enfants] # Ajout des guillemets
         }
 
-    class GroupeCours(Composite):
-        pass  # Hérite tout de Composite — aucun code à ajouter
+class GroupeCours(Composite):
+    pass 
 
-    class Session(Composite):
-        pass
+class Session(Composite):
+    pass
 
-    class Cours(Composite):
-        pass
+class Cours(Composite):
+    pass
 
-    class Programme(Composite):
-        pass
+class Programme(Composite):
+    pass
+
+class Departement(Composite):
+    pass
+
+

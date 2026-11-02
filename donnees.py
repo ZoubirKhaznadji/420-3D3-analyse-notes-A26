@@ -1,7 +1,11 @@
 from models.etudiant import Etudiant
 from models.composite import Composite
 from models.composite import GroupeCours
-Session, Cours, Programme
+from models.composite import Session
+from models.composite import Cours
+from models.composite import Programme
+from models.composite import Departement
+
 
 
 def construire_programme() -> Composite:
@@ -57,5 +61,10 @@ def construire_programme() -> Composite:
     programme = Programme("Techniques de l'informatique")
     programme.ajouter(cours_3d3)
     programme.ajouter(cours_3r1)
+    departement_info = Departement("Informatique")
+    departement_info.ajouter(cours_3d3)
+    programme.ajouter(departement_info)
 
     return programme
+
+    
